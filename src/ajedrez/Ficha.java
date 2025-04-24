@@ -25,7 +25,7 @@ public abstract class Ficha {
     
     
     public abstract List<Posicion> getMovimientosPosibles(int x, int y);
-    
+    public abstract List<Posicion> getMuertesPosibles(int x, int y);
     public abstract String getNombre();
     
     public Posicion getPosicion() {

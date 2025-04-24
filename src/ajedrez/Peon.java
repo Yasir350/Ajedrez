@@ -33,13 +33,26 @@ class Peon extends Ficha{
     }
     
     @Override
+    public List<Posicion> getMuertesPosibles(int x, int y){
+        List<Posicion> posiciones = new ArrayList<>();
+        for (int i = 0; i < rango; i++) {
+            if (!this.haMovido && esValido(y+1, x+(rango * this.direccion))) {
+                posiciones.add(new Posicion(y+1, x+(rango * this.direccion)));
+            }else if(!this.haMovido && esValido(y-1, x+(rango * this.direccion))){
+                posiciones.add(new Posicion(y-1, x+(rango * this.direccion)));
+            }
+        }
+        return posiciones;
+    }
+    
+    @Override
     public String getNombre(){
         return this.getColor() == 0? nombre.toLowerCase() : nombre.toUpperCase();
     }
     
     public boolean esValido(int y, int x){
         for (int i = 0; i < rango; i++) {
-            if (x >= 0 && x<=8) {
+            if (x >= 0 && x<8) {
                 return true;
             }
         }

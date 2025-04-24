@@ -31,10 +31,13 @@ public class Jugador {
         int x = ficha.getPosicion().getX();
         int y = ficha.getPosicion().getY();
         List<Posicion> movimientosPosibles = ficha.getMovimientosPosibles(x, y);
+        List<Posicion> muertesPosibles = ficha.getMuertesPosibles(x, y);
+
         mostrarMovimientos(movimientosPosibles);
         //Mover la ficha en base al input
-        moverFicha(ficha, movimientosPosibles);
+        moverFicha(ficha, movimientosPosibles, muertesPosibles);
     }
+
     
     public Ficha elegirFicha(){
         List<Ficha> fichas = tablero.fichas_A_Mover(this.color);
@@ -44,7 +47,8 @@ public class Jugador {
         return ficha;
     }
     
-    public void moverFicha(Ficha ficha, List<Posicion> movimientosPosibles){
+    public void moverFicha(Ficha ficha, List<Posicion> movimientosPosibles, 
+            List<Posicion> muertesPosibles){
         System.out.println("A donde la quieres mover? ");
         Posicion movimiento = movimientosPosibles.get(sc.nextInt()-1);
         tablero.moverFicha(ficha, movimiento.getX(), movimiento.getY());

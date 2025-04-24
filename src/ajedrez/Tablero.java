@@ -88,7 +88,8 @@ public class Tablero {
 //        List<Posicion> posiciones = ficha.getMovimientosPosibles(x, y);
 //        if (posiciones.size() > 0) {
 //            for (int i = 0; i < posiciones.size(); i++) {
-//                System.out.println(i+". Mover a: "+traducirTablero(posiciones.get(i).getX(), posiciones.get(0).getY()));
+//                System.out.println(i+". 
+//Mover a: "+traducirTablero(posiciones.get(i).getX(), posiciones.get(0).getY()));
 //            }
 //            x = posiciones.get(0).getX();
 //            y = posiciones.get(0).getY();
@@ -114,8 +115,12 @@ public class Tablero {
         for (int i = 0; i < fichas.length; i++) {
             for (int j = 0; j < fichas[0].length; j++) {
                 if (fichas[i][j] != null) {
-                    tablero[fichas[i][j].getPosicion().getX()][fichas[i][j].getPosicion().getY()] = 
-                            new Casilla(new Posicion(fichas[i][j].getPosicion().getX(), fichas[i][j].getPosicion().getY()), 0, true, fichas[i][j]);
+                    tablero[fichas[i][j].getPosicion().getX()]
+                            [fichas[i][j].getPosicion().getY()] = 
+                            new Casilla(new Posicion(
+                                    fichas[i][j].getPosicion().getX(), 
+                                    fichas[i][j].getPosicion().getY()), 0, 
+                                    true, fichas[i][j]);
                 } 
             }
         }
@@ -140,7 +145,10 @@ public class Tablero {
             for (int j = 0; j < tablero.length; j++) {
                 Casilla casilla = tablero[i][j];
                 Ficha ficha = casilla.getFicha();
-                if (casilla.isOcupado() && !ficha.getMovimientosPosibles(i, j).isEmpty() && ficha.getColor() == colorJugador) {
+                if (casilla.isOcupado() && 
+                        (!ficha.getMovimientosPosibles(i, j).isEmpty() || 
+                        !ficha.getMuertesPosibles(j, j).isEmpty()) && 
+                        ficha.getColor() == colorJugador) {
                     fichasDisponibles.add(ficha);
                 }
             }
